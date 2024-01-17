@@ -38,21 +38,19 @@ const PokemonCards = observer(() => {
 
   async function getAndMapPokemonData(url) {
     const res = await axios.get(url);
+    const types = res.data.types.map((type) => type.type.name);
     return {
       id: res.data.id,
       name: res.data.name,
       stats: res.data.stats,
-      types: res.data.types,
+      types,
       totalMoves: res.data.moves.length,
       weight: res.data.weight,
     };
   }
 
   return (
-    <div
-      className={styles.PokemonCardsContainer}
-      onClick={() => console.log(pokemons.pokemons)}
-    >
+    <div className={styles.PokemonCardsContainer}>
       <ul className={styles.PokemonCardsList}>
         {pokemons.pokemons.map((pokemon) => {
           return <PokemonSingleCard pokemonData={pokemon} key={pokemon.id} />;

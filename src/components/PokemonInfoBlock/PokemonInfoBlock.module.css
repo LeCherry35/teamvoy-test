@@ -1,0 +1,41 @@
+.pokemonInfoContainer {
+  display: flex;
+  justify-content: center;
+}
+.pokemonInfoCard {
+  border: 1px solid black;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 25px;
+}
+.pokemonImage {
+  height: 200px;
+  width: 200px;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+.pokemonStatsBox {
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+}
+.pokemonStatsBox div {
+  border: 1px solid black;
+  font-size: 14px;
+  line-height: 25px;
+}
+
+@media screen and (max-width: 768px) {
+  .pokemonInfoContainer {
+    height: 40vh;
+    position: sticky;
+    top: 0;
+    padding: 30px;
+    background-color: white;
+    border-bottom: 1px solid black;
+  }
+  .pokemonInfoCard {
+    position: relative;
+  }
+}

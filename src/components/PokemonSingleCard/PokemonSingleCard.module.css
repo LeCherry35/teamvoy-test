@@ -2,10 +2,11 @@
   flex-grow: 1;
   border: 1px solid black;
   padding: 15px;
+  height: 300px;
 }
 .pokemonImage {
-  height: 200px;
-  width: 200px;
+  height: 180px;
+  width: 180px;
   border: 1px solid black;
   margin: 0 auto;
 }
@@ -13,13 +14,18 @@
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  padding: 20px;
+  padding: 10px;
 }
 .type {
   border: 2px solid black;
   border-radius: 5px;
   padding: 5px 15px;
 }
+.selected,
+.type:hover {
+  color: white;
+}
+
 .grass {
   background: linear-gradient(white, rgb(71, 192, 71));
   border-color: rgb(71, 192, 71);
@@ -99,4 +105,11 @@
 .shadow {
   background: linear-gradient(white, rgb(105, 79, 79));
   border-color: rgb(105, 79, 79);
+}
+
+@media screen and (max-width: 768px) {
+  .pokemonImage {
+    height: 150px;
+    width: 150px;
+  }
 }

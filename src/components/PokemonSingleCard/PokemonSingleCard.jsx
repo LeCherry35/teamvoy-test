@@ -2,27 +2,41 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./PokemonSingleCard.module.css";
 import firstLetterToUppercase from "../../helpers/firstLetterToUppercase";
+import pokemons from "../../store/pokemons";
+import { observer } from "mobx-react-lite";
 
-const PokemonSingleCard = ({ pokemonData }) => {
+const PokemonSingleCard = observer(({ pokemonData }) => {
   const { name, types } = pokemonData;
+
+  if (pokemons.filter && !types.includes(pokemons.filter)) return <></>;
+
   return (
     <li className={styles.cardContainer}>
       <Link to={`/${pokemonData.id}`}>
-        <div className={styles.pokemonImage}></div>
+        <div className={styles.pokemonImage}>{pokemons.filter}</div>
         <h4 className={styles.pokemonName}>{firstLetterToUppercase(name)}</h4>
         <div className={styles.pokemonTypesBox}>
           {types?.map((type) => (
             <div
-              className={`${styles.type} ${styles[type.type.name]}`}
-              key={type.type.name}
+              className={
+                pokemons.filter === type
+                  ? `${styles.type} ${styles[type]} ${styles.selected}`
+                  : `${styles.type} ${styles[type]}`
+              }
+              key={type}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                pokemons.setFilter(pokemons.filter === type ? "" : type);
+              }}
             >
-              {firstLetterToUppercase(type.type.name)}
+              {firstLetterToUppercase(type)}
             </div>
           ))}
         </div>
       </Link>
     </li>
   );
-};
+});
 
 export default PokemonSingleCard;

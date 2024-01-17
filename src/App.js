@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <h1>Pokedex</h1>
+        <h1 className="heading">Pokedex</h1>
         <div className="content">
           <PokemonCards />
 

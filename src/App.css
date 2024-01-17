@@ -1,8 +1,32 @@
 .App {
   text-align: center;
 }
+.heading {
+  margin: 20px auto;
+  font-size: 36px;
+  line-height: 72px;
+  border: 1px solid black;
+  width: 400px;
+}
 
+h4 {
+  font-size: 18px;
+  line-height: 30px;
+}
 .content {
   display: grid;
   grid-template-columns: 2fr 1fr;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .heading {
+    width: 80%;
+  }
 }
