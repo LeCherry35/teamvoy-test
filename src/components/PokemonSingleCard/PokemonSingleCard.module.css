@@ -1,0 +1,102 @@
+.cardContainer {
+  flex-grow: 1;
+  border: 1px solid black;
+  padding: 15px;
+}
+.pokemonImage {
+  height: 200px;
+  width: 200px;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+.pokemonTypesBox {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+.type {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
+.grass {
+  background: linear-gradient(white, rgb(71, 192, 71));
+  border-color: rgb(71, 192, 71);
+}
+.normal {
+  background: linear-gradient(white, rgb(168, 168, 120));
+  border-color: rgb(168, 168, 120);
+}
+.fighting {
+  background: linear-gradient(white, rgb(192, 48, 40));
+  border-color: rgb(192, 48, 40);
+}
+.flying {
+  background: linear-gradient(white, rgb(168, 144, 240));
+  border-color: rgb(168, 144, 240);
+}
+.poison {
+  background: linear-gradient(white, rgb(160, 64, 160));
+  border-color: rgb(160, 64, 160);
+}
+.ground {
+  background: linear-gradient(white, rgb(224, 192, 104));
+  border-color: rgb(224, 192, 104);
+}
+.rock {
+  background: linear-gradient(white, rgb(92, 92, 91));
+  border-color: rgb(92, 92, 91);
+}
+.bug {
+  background: linear-gradient(white, rgb(168, 184, 32));
+  border-color: rgb(168, 184, 32);
+}
+.ghost {
+  background: linear-gradient(white, rgb(112, 88, 152));
+  border-color: rgb(112, 88, 152);
+}
+.steel {
+  background: linear-gradient(white, rgb(184, 184, 208));
+  border-color: rgb(184, 184, 208);
+}
+.fire {
+  background: linear-gradient(white, rgb(240, 128, 48));
+  border-color: rgb(240, 128, 48);
+}
+.water {
+  background: linear-gradient(white, rgb(104, 144, 240));
+  border-color: rgb(104, 144, 240);
+}
+.electric {
+  background: linear-gradient(white, rgb(248, 208, 48));
+  border-color: rgb(248, 208, 48);
+}
+.psychic {
+  background: linear-gradient(white, rgb(248, 88, 136));
+  border-color: rgb(248, 88, 136);
+}
+.ice {
+  background: linear-gradient(white, rgb(152, 216, 216));
+  border-color: rgb(152, 216, 216);
+}
+.dragon {
+  background: linear-gradient(white, rgb(112, 56, 248));
+  border-color: rgb(112, 56, 248);
+}
+.dark {
+  background: linear-gradient(white, rgb(112, 88, 72));
+  border-color: rgb(112, 88, 72);
+}
+.fairy {
+  background: linear-gradient(white, rgb(238, 153, 172));
+  border-color: rgb(238, 153, 172);
+}
+.unknown {
+  background: linear-gradient(white, rgb(159, 159, 159));
+  border-color: rgb(159, 159, 159);
+}
+.shadow {
+  background: linear-gradient(white, rgb(105, 79, 79));
+  border-color: rgb(105, 79, 79);
+}
