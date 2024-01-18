@@ -11,31 +11,29 @@ const PokemonSingleCard = observer(({ pokemonData }) => {
   if (pokemons.filter && !types.includes(pokemons.filter)) return <></>;
 
   return (
-    <li className={styles.cardContainer}>
-      <Link to={`/${pokemonData.id}`}>
-        <div className={styles.pokemonImage}>{pokemons.filter}</div>
-        <h4 className={styles.pokemonName}>{firstLetterToUppercase(name)}</h4>
-        <div className={styles.pokemonTypesBox}>
-          {types?.map((type) => (
-            <div
-              className={
-                pokemons.filter === type
-                  ? `${styles.type} ${styles[type]} ${styles.selected}`
-                  : `${styles.type} ${styles[type]}`
-              }
-              key={type}
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                pokemons.setFilter(pokemons.filter === type ? "" : type);
-              }}
-            >
-              {firstLetterToUppercase(type)}
-            </div>
-          ))}
-        </div>
-      </Link>
-    </li>
+    <Link className={styles.cardContainer} to={`/${pokemonData.id}`}>
+      <div className={styles.pokemonImage}></div>
+      <h4 className={styles.pokemonName}>{firstLetterToUppercase(name)}</h4>
+      <div className={styles.pokemonTypesBox}>
+        {types?.map((type) => (
+          <div
+            className={
+              pokemons.filter === type
+                ? `${styles.type} ${styles[type]} ${styles.selected}`
+                : `${styles.type} ${styles[type]}`
+            }
+            key={type}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              pokemons.setFilter(pokemons.filter === type ? "" : type);
+            }}
+          >
+            {firstLetterToUppercase(type)}
+          </div>
+        ))}
+      </div>
+    </Link>
   );
 });
 

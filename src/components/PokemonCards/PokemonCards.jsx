@@ -47,7 +47,7 @@ const PokemonCards = observer(() => {
     } catch (e) {
       console.log(e);
     } finally {
-      // setIsLoading(false);
+      setIsLoading(false);
     }
   };
 

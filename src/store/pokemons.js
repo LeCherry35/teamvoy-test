@@ -14,4 +14,5 @@ class Pokemons {
   }
 }
 
-export default new Pokemons();
+const pokemons = new Pokemons();
+export default pokemons;
