@@ -7,7 +7,6 @@ class Pokemons {
     makeAutoObservable(this);
   }
   setPokemons(pokemons) {
-    console.log(pokemons);
     this.pokemons = pokemons;
   }
   setFilter(filter) {

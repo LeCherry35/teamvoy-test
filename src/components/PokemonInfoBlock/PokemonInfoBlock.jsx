@@ -15,26 +15,28 @@ const PokemonInfoBlock = () => {
     <div className={styles.pokemonInfoContainer}>
       <div className={styles.pokemonInfoCard}>
         <div className={styles.pokemonImage}></div>
-        <h4
-          className={styles.pokemonName}
-        >{`${firstLetterToUppercase(pokemon.name)} #${addZeroes(pokemon.id)}`}</h4>
-        <div className={styles.pokemonStatsBox}>
-          <div>Type</div>
-          <div>{firstLetterToUppercase(pokemon.types[0])}</div>
-          {pokemon.stats?.map((stat) => {
-            return (
-              <>
-                <div className={styles.statName}>
-                  {firstLetterToUppercase(stat.stat.name)}
-                </div>
-                <div className={styles.statValue}>{stat.base_stat}</div>
-              </>
-            );
-          })}
-          <div>Weight</div>
-          <div>{pokemon.weight}</div>
-          <div> Total moves</div>
-          <div>{pokemon.totalMoves}</div>
+        <div>
+          <h4
+            className={styles.pokemonName}
+          >{`${firstLetterToUppercase(pokemon.name)} #${addZeroes(pokemon.id)}`}</h4>
+          <div className={styles.pokemonStatsBox}>
+            <div>Type</div>
+            <div>{firstLetterToUppercase(pokemon.types[0])}</div>
+            {pokemon.stats?.map((stat) => {
+              return (
+                <>
+                  <div className={styles.statName}>
+                    {firstLetterToUppercase(stat.stat.name)}
+                  </div>
+                  <div className={styles.statValue}>{stat.base_stat}</div>
+                </>
+              );
+            })}
+            <div>Weight</div>
+            <div>{pokemon.weight}</div>
+            <div> Total moves</div>
+            <div>{pokemon.totalMoves}</div>
+          </div>
         </div>
       </div>
     </div>

@@ -12,6 +12,7 @@ function App() {
           <PokemonCards />
 
           <Routes>
+            <Route path="/" element={<></>} />
             <Route path="/:id" element={<PokemonInfoBlock />} />
           </Routes>
         </div>

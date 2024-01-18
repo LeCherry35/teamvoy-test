@@ -7,33 +7,48 @@ import { observer } from "mobx-react-lite";
 
 const PokemonCards = observer(() => {
   const [nextUrl, setNextUrl] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    axios.get("https://pokeapi.co/api/v2/pokemon/?limit=12").then((res) => {
-      const pokemonsPromises = [];
-      for (let pokemonInfo of res.data.results) {
-        const pokemon = getAndMapPokemonData(pokemonInfo.url);
-        pokemonsPromises.push(pokemon);
-      }
-      Promise.all(pokemonsPromises).then((pokemonsData) => {
-        pokemons.setPokemons(pokemonsData);
+    setIsLoading(true);
+    try {
+      axios.get("https://pokeapi.co/api/v2/pokemon/?limit=12").then((res) => {
+        const pokemonsPromises = [];
+        for (let pokemonInfo of res.data.results) {
+          const pokemon = getAndMapPokemonData(pokemonInfo.url);
+          pokemonsPromises.push(pokemon);
+        }
+        Promise.all(pokemonsPromises).then((pokemonsData) => {
+          pokemons.setPokemons(pokemonsData);
+        });
+        setNextUrl(res.data.next);
       });
-      setNextUrl(res.data.next);
-    });
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setIsLoading(false);
+    }
   }, []);
 
   const getPokemons = () => {
-    axios.get(nextUrl).then((res) => {
-      const pokemonsPromises = [];
-      for (let pokemonInfo of res.data.results) {
-        const pokemonInfoPromise = getAndMapPokemonData(pokemonInfo.url);
-        pokemonsPromises.push(pokemonInfoPromise);
-      }
-      Promise.all(pokemonsPromises).then((pokemonsData) => {
-        pokemons.setPokemons([...pokemons.pokemons, ...pokemonsData]);
+    setIsLoading(true);
+    try {
+      axios.get(nextUrl).then((res) => {
+        const pokemonsPromises = [];
+        for (let pokemonInfo of res.data.results) {
+          const pokemonInfoPromise = getAndMapPokemonData(pokemonInfo.url);
+          pokemonsPromises.push(pokemonInfoPromise);
+        }
+        Promise.all(pokemonsPromises).then((pokemonsData) => {
+          pokemons.setPokemons([...pokemons.pokemons, ...pokemonsData]);
+        });
+        setNextUrl(res.data.next);
       });
-      setNextUrl(res.data.next);
-    });
+    } catch (e) {
+      console.log(e);
+    } finally {
+      // setIsLoading(false);
+    }
   };
 
   async function getAndMapPokemonData(url) {
@@ -48,7 +63,6 @@ const PokemonCards = observer(() => {
       weight: res.data.weight,
     };
   }
-
   return (
     <div className={styles.PokemonCardsContainer}>
       <ul className={styles.PokemonCardsList}>
@@ -56,6 +70,7 @@ const PokemonCards = observer(() => {
           return <PokemonSingleCard pokemonData={pokemon} key={pokemon.id} />;
         })}
       </ul>
+      {isLoading && <div className={styles.loader}>Loading...</div>}
       <button onClick={getPokemons}>Load More</button>
     </div>
   );
