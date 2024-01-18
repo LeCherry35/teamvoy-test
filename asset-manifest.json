@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/teamvoy-test/static/css/main.1dace356.css",
+    "main.js": "/teamvoy-test/static/js/main.ace9bf09.js",
+    "index.html": "/teamvoy-test/index.html",
+    "main.1dace356.css.map": "/teamvoy-test/static/css/main.1dace356.css.map",
+    "main.ace9bf09.js.map": "/teamvoy-test/static/js/main.ace9bf09.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1dace356.css",
+    "static/js/main.ace9bf09.js"
+  ]
+}
