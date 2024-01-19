@@ -4,6 +4,7 @@
   padding: 15px;
   height: 300px;
   max-width: 230px;
+  text-transform: capitalize;
 }
 .pokemonImage {
   height: 180px;

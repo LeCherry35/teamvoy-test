@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./PokemonSingleCard.module.css";
-import firstLetterToUppercase from "../../helpers/firstLetterToUppercase";
 import pokemons from "../../store/pokemons";
 import { observer } from "mobx-react-lite";
 
@@ -13,7 +12,7 @@ const PokemonSingleCard = observer(({ pokemonData }) => {
   return (
     <Link className={styles.cardContainer} to={`/${pokemonData.id}`}>
       <div className={styles.pokemonImage}></div>
-      <h4 className={styles.pokemonName}>{firstLetterToUppercase(name)}</h4>
+      <h4 className={styles.pokemonName}>{name}</h4>
       <div className={styles.pokemonTypesBox}>
         {types?.map((type) => (
           <div
@@ -29,7 +28,7 @@ const PokemonSingleCard = observer(({ pokemonData }) => {
               pokemons.setFilter(pokemons.filter === type ? "" : type);
             }}
           >
-            {firstLetterToUppercase(type)}
+            {type}
           </div>
         ))}
       </div>
