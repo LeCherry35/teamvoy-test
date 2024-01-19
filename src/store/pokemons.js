@@ -5,6 +5,7 @@ class Pokemons {
   pokemons = [];
   filter = "";
   nextUrl = null;
+  isLoading = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -18,6 +19,7 @@ class Pokemons {
   }
   getPokemons() {
     const url = this.nextUrl || "https://pokeapi.co/api/v2/pokemon?limit=12";
+    this.isLoading = true;
     axios
       .get(url)
       .then((res) => {
@@ -31,7 +33,8 @@ class Pokemons {
         });
         this.nextUrl = res.data.next;
       })
-      .catch((e) => console.log(e.message));
+      .catch((e) => console.log(e.message))
+      .finally(() => (this.isLoading = false));
 
     async function getAndMapPokemonData(url) {
       //gets single pokemon data and maps it to the format we need

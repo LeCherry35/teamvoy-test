@@ -20,7 +20,7 @@ const PokemonCards = () => {
           return <PokemonSingleCard pokemonData={pokemon} key={pokemon.id} />;
         })}
       </ul>
-      {/* {isLoading && <div className={styles.loader}>Loading...</div>} */}
+      {pokemons.isLoading && <div className={styles.loader}>Loading...</div>}
       <button onClick={getPokemons}>Load More</button>
     </div>
   );
