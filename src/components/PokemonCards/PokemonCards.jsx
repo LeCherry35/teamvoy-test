@@ -11,6 +11,7 @@ const PokemonCards = () => {
 
   const getPokemons = () => {
     pokemons.getPokemons();
+    pokemons.setFilter("");
   };
 
   return (
