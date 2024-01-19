@@ -4,7 +4,7 @@ import styles from "./PokemonSingleCard.module.css";
 import pokemons from "../../store/pokemons";
 import { observer } from "mobx-react-lite";
 
-const PokemonSingleCard = observer(({ pokemonData }) => {
+const PokemonSingleCard = ({ pokemonData }) => {
   const { name, types } = pokemonData;
 
   if (pokemons.filter && !types.includes(pokemons.filter)) return <></>;
@@ -34,6 +34,6 @@ const PokemonSingleCard = observer(({ pokemonData }) => {
       </div>
     </Link>
   );
-});
+};
 
-export default PokemonSingleCard;
+export default observer(PokemonSingleCard);

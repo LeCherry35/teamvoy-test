@@ -4,7 +4,7 @@ import styles from "./PokemonCards.module.css";
 import PokemonSingleCard from "../PokemonSingleCard/PokemonSingleCard";
 import { observer } from "mobx-react-lite";
 
-const PokemonCards = observer(() => {
+const PokemonCards = () => {
   useEffect(() => {
     pokemons.getPokemons();
   }, []);
@@ -24,6 +24,6 @@ const PokemonCards = observer(() => {
       <button onClick={getPokemons}>Load More</button>
     </div>
   );
-});
+};
 
-export default PokemonCards;
+export default observer(PokemonCards);
