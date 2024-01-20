@@ -2,7 +2,7 @@
 
 [Github Pages](https://lecherry35.github.io/teamvoy-test/)
 
-[Vercel](https://teamvoy-test-1y7n04ze2-lecherry35.vercel.app/)
+[Vercel](https://teamvoy-test.vercel.app/)
 
 ## To run project on your computer
 
