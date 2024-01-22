@@ -5,13 +5,15 @@ import pokemons from "../../store/pokemons";
 import { observer } from "mobx-react-lite";
 
 const PokemonSingleCard = ({ pokemonData }) => {
-  const { name, types } = pokemonData;
+  const { name, types, sprites } = pokemonData;
 
   if (pokemons.filter && !types.includes(pokemons.filter)) return <></>;
 
   return (
-    <Link className={styles.cardContainer} to={`/${pokemonData.id}`}>
-      <div className={styles.pokemonImage}></div>
+    <Link className={styles.cardContainer} to={`${pokemonData.id}`}>
+      <div className={styles.pokemonImage}>
+        <img src={sprites.front_default} alt="pok"></img>
+      </div>
       <h4 className={styles.pokemonName}>{name}</h4>
       <div className={styles.pokemonTypesBox}>
         {types?.map((type) => (

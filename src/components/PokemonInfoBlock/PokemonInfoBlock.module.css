@@ -15,6 +15,13 @@
   width: 200px;
   border: 1px solid black;
   margin: 0 auto;
+  position: relative;
+}
+.pokemonImage img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .pokemonStatsBox > div {

@@ -22,7 +22,9 @@ const PokemonCards = () => {
         })}
       </ul>
       {pokemons.isLoading && <div className={styles.loader}>Loading...</div>}
-      <button onClick={getPokemons}>Load More</button>
+      <button onClick={getPokemons} disabled={pokemons.isLoading}>
+        Load More
+      </button>
     </div>
   );
 };

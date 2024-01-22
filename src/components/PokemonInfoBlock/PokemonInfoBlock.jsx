@@ -3,51 +3,71 @@ import { useParams } from "react-router-dom";
 import styles from "./PokemonInfoBlock.module.css";
 import pokemons from "../../store/pokemons";
 import addZeroes from "../../helpers/addZeroes";
+import { observer } from "mobx-react-lite";
 
 const PokemonInfoBlock = () => {
-  
   const { id } = useParams();
+  const [imageNumber, setImageNumber] = React.useState(0);
 
   const pokemon = pokemons.pokemons.find(
     (pokemon) => pokemon.id === Number(id),
   );
+  if (!pokemon && pokemons.isLoading)
+    return <></>; //if no pokemon selected return empty fragment
+  else if (pokemon) {
+    const { name, types, stats, sprites, weight, totalMoves } = pokemon;
 
-  if (!pokemon) return <></>; //if no pokemon selected return empty fragment
+    const images = [];
+    for (let image in sprites) {
+      if (sprites[image] && typeof sprites[image] === "string")
+        images.push(sprites[image]);
+    }
 
-  return (
-    <div className={styles.pokemonInfoContainer}>
-      <div className={styles.pokemonInfoCard}>
-        <div className={styles.pokemonImage}></div>
-        <div>
-          <h4
-            className={styles.pokemonName}
-          >{`${pokemon.name} #${addZeroes(pokemon.id)}`}</h4>
-          <div className={styles.pokemonStatsBox}>
-            <div>
-              <div>Type</div>
-              <div>{pokemon.types[0]}</div>
-            </div>
-            {pokemon.stats?.map((stat) => {
-              return (
-                <div key={pokemon.id + stat.stat.name}>
-                  <div className={styles.statName}>{stat.stat.name}</div>
-                  <div className={styles.statValue}>{stat.base_stat}</div>
-                </div>
-              );
-            })}
-            <div>
-              <div>Weight</div>
-              <div>{pokemon.weight}</div>
-            </div>
-            <div>
-              <div> Total moves</div>
-              <div>{pokemon.totalMoves}</div>
+    const changeImage = () => {
+      if (imageNumber < images.length - 1) {
+        setImageNumber((imageNumber) => imageNumber + 1);
+      } else {
+        setImageNumber(0);
+      }
+    };
+
+    return (
+      <div className={styles.pokemonInfoContainer}>
+        <div className={styles.pokemonInfoCard}>
+          <div className={styles.pokemonImage} onClick={() => changeImage()}>
+            <img src={images[imageNumber]} />
+          </div>
+          <div>
+            <h4
+              className={styles.pokemonName}
+            >{`${name} #${addZeroes(id)}`}</h4>
+            <div className={styles.pokemonStatsBox}>
+              <div>
+                <div>Type</div>
+                <div>{types[0]}</div>
+              </div>
+              {stats?.map((stat) => {
+                return (
+                  <div key={id + stat.stat.name}>
+                    <div className={styles.statName}>{stat.stat.name}</div>
+                    <div className={styles.statValue}>{stat.base_stat}</div>
+                  </div>
+                );
+              })}
+              <div>
+                <div>Weight</div>
+                <div>{weight}</div>
+              </div>
+              <div>
+                <div> Total moves</div>
+                <div>{totalMoves}</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
-export default PokemonInfoBlock;
+export default observer(PokemonInfoBlock);

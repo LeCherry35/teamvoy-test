@@ -19,7 +19,7 @@ class Pokemons {
   }
   getPokemons() {
     const url = this.nextUrl || "https://pokeapi.co/api/v2/pokemon?limit=12";
-    this.isLoading = true;
+    this.setLoading(true);
     axios
       .get(url)
       .then((res) => {
@@ -34,7 +34,7 @@ class Pokemons {
         this.nextUrl = res.data.next;
       })
       .catch((e) => console.log(e.message))
-      .finally(() => (this.isLoading = false));
+      .finally(() => this.setLoading(false));
 
     async function getAndMapPokemonData(url) {
       //gets single pokemon data and maps it to the format we need
@@ -47,8 +47,12 @@ class Pokemons {
         types,
         totalMoves: res.data.moves.length,
         weight: res.data.weight,
+        sprites: res.data.sprites,
       };
     }
+  }
+  setLoading(isLoading) {
+    this.isLoading = isLoading;
   }
 }
 
